@@ -20,10 +20,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.applovin.array.rewardsplus.service.ReLinkerManager;
 import com.eclipsesource.v8.inspector.V8InspectorDelegate;
 import com.eclipsesource.v8.utils.V8Executor;
 import com.eclipsesource.v8.utils.V8Map;
 import com.eclipsesource.v8.utils.V8Runnable;
+import com.getkeepsafe.relinker.ReLinker;
 
 import dalvik.annotation.optimization.FastNative;
 
@@ -75,7 +77,7 @@ public class V8 extends V8Object {
 
     private synchronized static void load(final String tmpDirectory) {
         try {
-            System.loadLibrary("j2v8");
+            ReLinkerManager.loadLibrary("j2v8");
             nativeLibraryLoaded = true;
         } catch (Error e) {
             nativeLoadError = e;
